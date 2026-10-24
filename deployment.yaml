@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-calc-deployment
+  labels:
+    app: python-calc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-calc
+  template:
+    metadata:
+      labels:
+        app: python-calc
+    spec:
+      containers:
+      - name: calc-container
+        image: ziadelmelegy/python-cli-calculator:1.0
+        stdin: true
+        tty: true
